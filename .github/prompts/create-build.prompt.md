@@ -1,0 +1,1 @@
+Виконай skill build-and-test для створення тестів та скриптів ci.sh / ci.bat.

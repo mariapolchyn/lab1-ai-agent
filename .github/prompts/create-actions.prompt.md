@@ -1,0 +1,1 @@
+Виконай skill github-actions для створення .github/workflows/ci.yml.

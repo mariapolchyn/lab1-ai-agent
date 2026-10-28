@@ -1,0 +1,30 @@
+name: CI Workflow
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Run CI Script (Bash - Linux/macOS)
+      if: runner.os != 'Windows'
+      run: |
+        chmod +x ./scripts/ci.sh
+        ./scripts/ci.sh
+
+    - name: Run CI Script (CMD - Windows)
+      if: runner.os == 'Windows'
+      run: .\scripts\ci.bat

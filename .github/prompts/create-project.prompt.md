@@ -1,0 +1,1 @@
+Виконай skill project-scaffold для створення базового Rust-проєкту.
